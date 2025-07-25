@@ -1,3 +1,5 @@
+import json
+
 tasks = []
 completed_tasks = []
 
@@ -55,8 +57,23 @@ def mark_completed():
         else:
             print("Task not found! Please check your spelling and try again.")
 
+def save_tasks():
+    data = {"tasks": tasks, "completed_tasks": completed_tasks}
+    with open("tasks.json", "w") as tasks_file:
+        json.dump(data, tasks_file)
+
+def load_tasks():
+    try:
+        with open("tasks.json", "r") as tasks_file:
+            data = json.load(tasks_file)
+            tasks.extend(data.get("tasks", []))
+            completed_tasks.extend(data.get("completed_tasks", []))
+    except FileNotFoundError:
+        print("New list. No tasks yet.")
+
 
 def main():
+    load_tasks()
     while True:
         print("\n=== TO-DO LIST ===")
         print("1. Add task")
@@ -79,6 +96,7 @@ def main():
         elif choice == "5":
             view_completed_tasks()
         elif choice == "6":
+            save_tasks()
             print("Goodbye!")
             break
         else:
