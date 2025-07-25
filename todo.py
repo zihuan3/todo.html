@@ -8,7 +8,7 @@ def add_task():
 
 # Prints every task in the tasks list
 def view_tasks():
-    if len(tasks) > 0:
+    if tasks:
         print("Tasks:")
         for task in tasks:
             print(task)
@@ -16,7 +16,7 @@ def view_tasks():
         print("No tasks")
 
 def view_completed_tasks():
-    if len(completed_tasks) > 0:
+    if completed_tasks:
         print("Completed tasks:")
         for completed_task in completed_tasks:
             print(completed_task)
@@ -54,7 +54,7 @@ def main():
         print("5. View completed tasks")
         print("6. Quit")
 
-        choice = input("Choose an option(1-6)")
+        choice = input("Choose an option(1-6): ")
 
         if choice == "1":
             add_task()
