@@ -3,8 +3,12 @@ completed_tasks = []
 
 # Adds a singular user-inputted task to the tasks list
 def add_task():
-    task_to_add = input("Enter a task to add: ")
-    tasks.append(task_to_add)
+    task_to_add = input("Enter a task to add: ").strip()
+    if task_to_add:
+        tasks.append(task_to_add)
+        print(f"Added: {task_to_add}")
+    else:
+        print("Task cannot be empty")
 
 # Prints every task in the tasks list
 def view_tasks():
