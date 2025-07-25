@@ -8,14 +8,20 @@ def add_task():
 
 # Prints every task in the tasks list
 def view_tasks():
-    print("Tasks:")
-    for task in tasks:
-        print(task)
+    if len(tasks) > 0:
+        print("Tasks:")
+        for task in tasks:
+            print(task)
+    else:
+        print("No tasks")
 
 def view_completed_tasks():
-    print("Completed tasks:")
-    for completed_task in completed_tasks:
-        print(completed_task)
+    if len(completed_tasks) > 0:
+        print("Completed tasks:")
+        for completed_task in completed_tasks:
+            print(completed_task)
+    else:
+        print("No completed tasks")
 
 # Remove a user-specified task
 def remove_task():
