@@ -20,16 +20,23 @@ def view_completed_tasks():
 # Remove a user-specified task
 def remove_task():
     task_to_remove = input("Enter a task to remove: ")
-    tasks.remove(task_to_remove)
+    if task_to_remove in tasks:
+        tasks.remove(task_to_remove)
+        print(f"Removed: {task_to_remove}")
+    else:
+        print("Task not found! Please check your spelling and try again.")
 
 # Check if task exists and mark completed if so
 # Print error message if not
 def mark_completed():
     task_to_mark = input("Enter a task to mark completed: ")
     if task_to_mark in tasks:
+        tasks.remove(task_to_mark)
         completed_tasks.append(task_to_mark)
+        print(f"Completed: {task_to_mark}")
     else:
-        print("Task not found")
+        print("Task not found! Please check your spelling and try again.")
+
 
 def main():
     while True:
