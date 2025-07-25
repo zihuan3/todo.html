@@ -10,38 +10,46 @@ def add_task():
 def view_tasks():
     if tasks:
         print("Tasks:")
-        for task in tasks:
-            print(task)
+        for i, task in enumerate(tasks, 1):
+            print(f"{i}. {task}")
     else:
         print("No tasks")
 
 def view_completed_tasks():
     if completed_tasks:
         print("Completed tasks:")
-        for completed_task in completed_tasks:
-            print(completed_task)
+        for i, task in enumerate(completed_tasks, 1):
+            print(f"{i}. {task}")
     else:
         print("No completed tasks")
 
 # Remove a user-specified task
 def remove_task():
-    task_to_remove = input("Enter a task to remove: ")
-    if task_to_remove in tasks:
-        tasks.remove(task_to_remove)
-        print(f"Removed: {task_to_remove}")
+    if not tasks:
+        print("No tasks to remove")
+        return
     else:
-        print("Task not found! Please check your spelling and try again.")
+        task_to_remove = input("Enter a task to remove: ")
+        if task_to_remove in tasks:
+            tasks.remove(task_to_remove)
+            print(f"Removed: {task_to_remove}")
+        else:
+            print("Task not found! Please check your spelling and try again.")
 
 # Check if task exists and mark completed if so
 # Print error message if not
 def mark_completed():
-    task_to_mark = input("Enter a task to mark completed: ")
-    if task_to_mark in tasks:
-        tasks.remove(task_to_mark)
-        completed_tasks.append(task_to_mark)
-        print(f"Completed: {task_to_mark}")
+    if not tasks:
+        print("No tasks to mark completed")
+        return
     else:
-        print("Task not found! Please check your spelling and try again.")
+        task_to_mark = input("Enter a task to mark completed: ")
+        if task_to_mark in tasks:
+            tasks.remove(task_to_mark)
+            completed_tasks.append(task_to_mark)
+            print(f"Completed: {task_to_mark}")
+        else:
+            print("Task not found! Please check your spelling and try again.")
 
 
 def main():
