@@ -22,22 +22,42 @@ def remove_task():
     task_to_remove = input("Enter a task to remove: ")
     tasks.remove(task_to_remove)
 
+# Check if task exists and mark completed if so
+# Print error message if not
 def mark_completed():
     task_to_mark = input("Enter a task to mark completed: ")
-    completed_tasks.append(task_to_mark)
+    if task_to_mark in tasks:
+        completed_tasks.append(task_to_mark)
+    else:
+        print("Task not found")
 
 def main():
-    print("Add 3 tasks")
-    counter = 0
-    while counter < 3:
-        add_task()
-        counter += 1
-    view_tasks()
-    remove_task()
-    view_tasks()
-    mark_completed()
-    view_tasks()
-    view_completed_tasks()
+    while True:
+        print("\n=== TO-DO LIST ===")
+        print("1. Add task")
+        print("2. View tasks")
+        print("3. Remove task")
+        print("4. Mark task complete")
+        print("5. View completed tasks")
+        print("6. Quit")
+
+        choice = input("Choose an option(1-6)")
+
+        if choice == "1":
+            add_task()
+        elif choice == "2":
+            view_tasks()
+        elif choice == "3":
+            remove_task()
+        elif choice == "4":
+            mark_completed()
+        elif choice == "5":
+            view_completed_tasks()
+        elif choice == "6":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
 
 if __name__ == '__main__':
     main()
