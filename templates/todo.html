@@ -15,7 +15,10 @@
     <h2>Tasks:</h2>
     <ul>
         {% for task in tasks %}
-            <li>{{ task }}</li>
+            <li>
+                {{ task }}
+                <a href="/complete/{{ loop.index0 }}">Complete</a>
+            </li>
         {% endfor %}
     </ul>
 
