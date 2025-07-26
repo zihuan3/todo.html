@@ -36,5 +36,13 @@ def add_task():
         save_tasks()
     return redirect(url_for('home'))
 
+@app.route('/complete/<int:task_id>')
+def complete_task(task_id):
+    if 0 <= task_id < len(tasks):
+        completed_task = tasks.pop(task_id)
+        completed_tasks.append(completed_task)
+        save_tasks()
+    return redirect(url_for('home'))
+
 if __name__ == '__main__':
     app.run(debug=True)
