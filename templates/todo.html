@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>To-do App</title>
+</head>
+<body>
+    <h1>TO-DO LIST</h1>
+
+    <form action="/add" method="POST">
+        <label for="task-input">Enter a task:</label>
+        <input type="text" id="task-input" name="task" placeholder="Enter a task to add">
+        <button type="submit">Add Task</button>
+    </form>
+
+    <h2>Tasks:</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Completed Tasks:</h2>
+    <ul>
+        {% for task in completed_tasks %}
+            <li>{{ task }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
