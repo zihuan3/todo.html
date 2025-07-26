@@ -12,8 +12,8 @@ def load_tasks():
     try:
         with open("tasks.json", "r") as tasks_file:
             data = json.load(tasks_file)
-            tasks.extend(data.get("tasks", []))
-            completed_tasks.extend(data.get("completed_tasks", []))
+            tasks = data.get("tasks", [])  # This replaces the tasks list
+            completed_tasks = data.get("completed_tasks", [])  # This replaces the completed tasks list
     except FileNotFoundError:
         pass
 
