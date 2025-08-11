@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const addTaskForm = document.getElementById('add-task-form');
     const taskInput = document.getElementById('task-input');
     const tasksContainer = document.getElementById('tasks-container');
-    const completedTasksContainer = document.getElementById('completed-tasks-container');
+    let completedTasksContainer = document.getElementById('completed-tasks-container');
 
     // Add task functionality
     addTaskForm.addEventListener('submit', function(e) {
@@ -82,7 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const completedIndex = deleteBtn.getAttribute('data-completed-index');
         const taskItem = deleteBtn.closest('.task-item');
 
-        if (!confirm('Are you sure you want to delete this task?')) {
+        // Only show confirmation for active tasks, not completed tasks
+        if (taskIndex !== null && !confirm('Are you sure you want to delete this task?')) {
             return;
         }
 
@@ -105,7 +106,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     taskItem.remove();
                     updateTaskIndices();
-                    checkForEmptyState();
+                    // Only check for empty state if we're deleting from active tasks
+                    if (taskIndex !== null) {
+                        checkForEmptyState();
+                    }
                 }, 300);
             } else {
                 alert('Error deleting task: ' + (data.message || 'Unknown error'));
@@ -170,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
 
         tasksContainer.appendChild(taskItem);
+        updateAllTaskIndices(); // Update all indices after adding
     }
 
     // Move task to completed section
@@ -208,12 +213,18 @@ document.addEventListener('DOMContentLoaded', function() {
         taskItem.style.transform = 'translateX(100%)';
         setTimeout(() => {
             taskItem.remove();
+            updateAllTaskIndices(); // Use the comprehensive update function
             checkForEmptyState();
         }, 300);
     }
 
-    // Update task indices after deletion
+    // Update task indices after deletion or completion
     function updateTaskIndices() {
+        updateAllTaskIndices();
+    }
+
+    // Update all task indices to ensure they're sequential
+    function updateAllTaskIndices() {
         const activeTasks = document.querySelectorAll('#tasks-container .task-item:not(.empty-state)');
         activeTasks.forEach((task, index) => {
             task.setAttribute('data-index', index);
