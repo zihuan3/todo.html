@@ -12,7 +12,6 @@ app = Flask(__name__)
 tasks = []
 completed_tasks = []
 
-
 def load_tasks():
     global tasks, completed_tasks
     try:
@@ -20,10 +19,15 @@ def load_tasks():
             data = json.load(tasks_file)
             tasks = data.get("tasks", [])
             completed_tasks = data.get("completed_tasks", [])
+        print(f"Loaded {len(tasks)} tasks and {len(completed_tasks)} completed tasks")
     except FileNotFoundError:
+        print("No tasks.json found, starting with empty lists")
         tasks = []
         completed_tasks = []
-
+    except json.JSONDecodeError:
+        print("Invalid JSON file, starting with empty lists")
+        tasks = []
+        completed_tasks = []
 
 def save_tasks():
     data = {"tasks": tasks, "completed_tasks": completed_tasks}
