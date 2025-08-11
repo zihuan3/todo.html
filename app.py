@@ -37,7 +37,7 @@ load_tasks()
 
 @app.route('/')
 def index():
-    return render_template('index.html', tasks=tasks, completed_tasks=completed_tasks)
+    return render_template('todo.html', tasks=tasks, completed_tasks=completed_tasks)
 
 
 @app.route('/add', methods=['POST'])
