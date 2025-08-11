@@ -133,6 +133,5 @@ def edit_task(task_index):
     except Exception as e:
         return jsonify({'success': False, 'message': str(e)})
 
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
