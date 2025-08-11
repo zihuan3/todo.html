@@ -14,7 +14,7 @@ A simple to-do list.
 
 **Option 1: Use Online (Recommended)**
 
-**[Click here to use the app instantly](https://zihuan3.github.io/todo.py/todo-app.html)**
+**[Click here to use the app instantly](https://zihuan3.github.io/todo.html/todo-app.html)**
 
 **Option 2: Download and Use Locally**
 
