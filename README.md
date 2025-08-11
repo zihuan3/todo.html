@@ -1,4 +1,16 @@
-🚀 How to Use
+**To-Do List App**
+
+A simple to-do list.
+
+**Features**
+
+- Add, edit, mark complete, and delete tasks
+- Automatically saves
+- Browser-run
+- Data locally stored, private
+
+
+**🚀 How to Use**
 
 **Option 1: Use Online (Recommended)**
 
@@ -6,10 +18,17 @@
 
 **Option 2: Download and Use Locally**
 
-Click the green "Code" button above
+- Click the green "Code" button above
 
-Select "Download ZIP"
+- Select "Download ZIP"
 
-Extract the files
+- Extract the files
 
-Double-click the HTML file to open in your browser
+- Double-click the HTML file to open in your browser
+
+**🛠️ Built with:**
+
+- HTML5
+- CSS3 (with modern gradients and animations)
+- Vanilla JavaScript
+- Local Storage API
