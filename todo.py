@@ -3,7 +3,7 @@ import json
 tasks = []
 completed_tasks = []
 
-# Adds a singular user-inputted task to the tasks list
+# Adds single user-inputted task to tasks list
 def add_task():
     task_to_add = input("Enter a task to add: ").strip()
     if task_to_add:
@@ -12,7 +12,7 @@ def add_task():
     else:
         print("Task cannot be empty")
 
-# Prints every task in the tasks list
+# Prints every task in tasks list
 def view_tasks():
     if tasks:
         print("Tasks:")
@@ -29,7 +29,7 @@ def view_completed_tasks():
     else:
         print("No completed tasks")
 
-# Remove a user-specified task
+# Remove user-specified task
 def remove_task():
     if not tasks:
         print("No tasks to remove")
